@@ -3,124 +3,1704 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>XYZ Fulfillment Hub</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#172033}
-header{background:#fff;border-bottom:1px solid #e5e9f0;padding:16px 28px;display:flex;justify-content:space-between;align-items:center}
-.brand{font-size:21px;font-weight:700}.brand span{color:#2563eb}.user{font-size:13px;color:#667085}
-.layout{display:flex;min-height:calc(100vh - 67px)}aside{width:220px;background:#fff;border-right:1px solid #e5e9f0;padding:20px 12px}
-nav button{display:block;width:100%;text-align:left;border:0;background:transparent;padding:12px 14px;border-radius:8px;margin-bottom:5px;color:#475467;cursor:pointer;font-size:14px}
-nav button.active,nav button:hover{background:#eaf1ff;color:#1d4ed8;font-weight:600}
-main{flex:1;padding:25px;overflow:auto}.page{display:none}.page.active{display:block}
-h1{font-size:25px;margin:0 0 6px}.subtitle{color:#667085;font-size:14px;margin-bottom:22px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}.card{background:#fff;border:1px solid #e5e9f0;border-radius:12px;padding:17px}.label{font-size:12px;color:#667085}.value{font-size:27px;font-weight:700;margin-top:7px}.danger{color:#dc2626}.warning{color:#d97706}.good{color:#15803d}
-.panel{background:#fff;border:1px solid #e5e9f0;border-radius:12px;padding:18px;margin-bottom:18px}.panel h2{font-size:17px;margin:0 0 14px}
-.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}input,select{padding:9px 11px;border:1px solid #d0d5dd;border-radius:7px;background:#fff;font-size:13px}
-table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:12px 9px;border-bottom:1px solid #eef0f4}th{color:#667085;font-size:12px;background:#fafbfc}
-.badge{display:inline-block;padding:4px 8px;border-radius:20px;font-size:11px;font-weight:600}.high{background:#fee2e2;color:#b91c1c}.medium{background:#fff4cc;color:#92400e}.normal{background:#eef2f7;color:#475467}.ready{background:#dcfce7;color:#166534}.issue{background:#fee2e2;color:#b91c1c}.progress{background:#dbeafe;color:#1d4ed8}
-.btn{border:0;border-radius:7px;padding:8px 11px;background:#2563eb;color:white;cursor:pointer;font-size:12px}.btn.secondary{background:#eef2f7;color:#344054}.btn.success{background:#15803d}
-.alert{padding:11px 13px;border-radius:8px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-size:13px;margin-bottom:12px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.progressbar{height:8px;background:#edf0f5;border-radius:10px;overflow:hidden}.progressbar div{height:100%;background:#2563eb}
-.issue-row{display:flex;justify-content:space-between;gap:15px;padding:12px 0;border-bottom:1px solid #eef0f4}.issue-row:last-child{border-bottom:0}
-.small{font-size:12px;color:#667085}.empty{padding:25px;text-align:center;color:#667085}
-@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}aside{width:170px}}
-@media(max-width:600px){.layout{display:block}aside{width:100%;border-right:0;border-bottom:1px solid #e5e9f0}.cards{grid-template-columns:1fr 1fr}main{padding:15px}table{min-width:750px}.panel{overflow:auto}}
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+}
+
+/* HEADER */
+header{
+    background:#fff;
+    border-bottom:1px solid #e5e9f0;
+    padding:16px 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.brand{
+    font-size:21px;
+    font-weight:700;
+}
+
+.brand span{
+    color:#2563eb;
+}
+
+.user{
+    font-size:13px;
+    color:#667085;
+}
+
+/* MAIN LAYOUT */
+.layout{
+    display:flex;
+    min-height:calc(100vh - 67px);
+}
+
+/* SIDEBAR */
+aside{
+    width:220px;
+    background:#fff;
+    border-right:1px solid #e5e9f0;
+    padding:20px 12px;
+}
+
+nav button{
+    display:block;
+    width:100%;
+    text-align:left;
+    border:0;
+    background:transparent;
+    padding:12px 14px;
+    border-radius:8px;
+    margin-bottom:5px;
+    color:#475467;
+    cursor:pointer;
+    font-size:14px;
+}
+
+nav button.active,
+nav button:hover{
+    background:#eaf1ff;
+    color:#1d4ed8;
+    font-weight:600;
+}
+
+/* CONTENT */
+main{
+    flex:1;
+    padding:25px;
+    overflow:auto;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+h1{
+    font-size:25px;
+    margin:0 0 6px;
+}
+
+.subtitle{
+    color:#667085;
+    font-size:14px;
+    margin-bottom:22px;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin-bottom:20px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #e5e9f0;
+    border-radius:12px;
+    padding:17px;
+}
+
+.label{
+    font-size:12px;
+    color:#667085;
+}
+
+.value{
+    font-size:27px;
+    font-weight:700;
+    margin-top:7px;
+}
+
+.danger{
+    color:#dc2626;
+}
+
+.warning{
+    color:#d97706;
+}
+
+.good{
+    color:#15803d;
+}
+
+/* PANELS */
+.panel{
+    background:#fff;
+    border:1px solid #e5e9f0;
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:18px;
+}
+
+.panel h2{
+    font-size:17px;
+    margin:0 0 14px;
+}
+
+/* GRID */
+.grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+/* TOOLBAR */
+.toolbar{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+}
+
+input,
+select{
+    padding:9px 11px;
+    border:1px solid #d0d5dd;
+    border-radius:7px;
+    background:#fff;
+    font-size:13px;
+}
+
+/* TABLE */
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+}
+
+th,
+td{
+    text-align:left;
+    padding:12px 9px;
+    border-bottom:1px solid #eef0f4;
+}
+
+th{
+    color:#667085;
+    font-size:12px;
+    background:#fafbfc;
+}
+
+/* BADGES */
+.badge{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:600;
+}
+
+.high{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.medium{
+    background:#fff4cc;
+    color:#92400e;
+}
+
+.normal{
+    background:#eef2f7;
+    color:#475467;
+}
+
+.ready{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.issue{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.progress{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+
+/* BUTTONS */
+.btn{
+    border:0;
+    border-radius:7px;
+    padding:8px 11px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.btn:hover{
+    opacity:.9;
+}
+
+.btn.secondary{
+    background:#eef2f7;
+    color:#344054;
+}
+
+.btn.success{
+    background:#15803d;
+}
+
+/* ALERTS */
+.alert{
+    padding:11px 13px;
+    border-radius:8px;
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    color:#9a3412;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+/* PROGRESS */
+.progressbar{
+    height:8px;
+    background:#edf0f5;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.progressbar div{
+    height:100%;
+    background:#2563eb;
+}
+
+/* ISSUES */
+.issue-row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:12px 0;
+    border-bottom:1px solid #eef0f4;
+}
+
+.issue-row:last-child{
+    border-bottom:0;
+}
+
+.small{
+    font-size:12px;
+    color:#667085;
+}
+
+.empty{
+    padding:25px;
+    text-align:center;
+    color:#667085;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .grid2{
+        grid-template-columns:1fr;
+    }
+
+    aside{
+        width:170px;
+    }
+}
+
+@media(max-width:600px){
+
+    header{
+        padding:14px 16px;
+    }
+
+    .brand{
+        font-size:18px;
+    }
+
+    .user{
+        font-size:11px;
+    }
+
+    .layout{
+        display:block;
+    }
+
+    aside{
+        width:100%;
+        border-right:0;
+        border-bottom:1px solid #e5e9f0;
+        padding:10px;
+    }
+
+    nav{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:5px;
+    }
+
+    nav button{
+        margin-bottom:0;
+    }
+
+    main{
+        padding:15px;
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .card{
+        padding:14px;
+    }
+
+    .value{
+        font-size:24px;
+    }
+
+    .panel{
+        padding:14px;
+    }
+
+    .table-wrap{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:700px;
+    }
+
+    .issue-row{
+        flex-direction:column;
+    }
+}
 </style>
 </head>
+
 <body>
-<header><div class="brand">XYZ <span>Fulfillment Hub</span></div><div class="user">Warehouse Operations • Today</div></header>
+
+<!-- HEADER -->
+<header>
+
+    <div class="brand">
+        XYZ <span>Fulfillment Hub</span>
+    </div>
+
+    <div class="user">
+        Warehouse Operations • Today
+    </div>
+
+</header>
+
+
 <div class="layout">
-<aside><nav>
-<button class="active" data-page="dashboard">▣ Dashboard</button>
-<button data-page="orders">▤ Orders</button>
-<button data-page="inventory">□ Inventory</button>
-<button data-page="shipping">◉ Shipping</button>
-<button data-page="issues">⚠ Issues</button>
-</nav></aside>
+
+<!-- SIDEBAR -->
+<aside>
+
+<nav>
+
+<button class="active" data-page="dashboard">
+▣ Dashboard
+</button>
+
+<button data-page="orders">
+▤ Orders
+</button>
+
+<button data-page="inventory">
+□ Inventory
+</button>
+
+<button data-page="shipping">
+◉ Shipping
+</button>
+
+<button data-page="issues">
+⚠ Issues
+</button>
+
+</nav>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
 <main>
+
+
+<!-- ================= DASHBOARD ================= -->
+
 <section id="dashboard" class="page active">
-<h1>Operations Dashboard</h1><div class="subtitle">A single view of orders, stock, packing and courier handover.</div>
+
+<h1>Operations Dashboard</h1>
+
+<div class="subtitle">
+A single view of orders, stock, packing and courier handover.
+</div>
+
+
 <div class="cards">
-<div class="card"><div class="label">Orders today</div><div class="value">247</div></div>
-<div class="card"><div class="label">Priority orders</div><div class="value danger">18</div></div>
-<div class="card"><div class="label">Awaiting packing</div><div class="value warning">31</div></div>
-<div class="card"><div class="label">Open issues</div><div class="value danger">7</div></div>
+
+<div class="card">
+<div class="label">Orders today</div>
+<div class="value">247</div>
 </div>
+
+<div class="card">
+<div class="label">Priority orders</div>
+<div class="value danger">18</div>
+</div>
+
+<div class="card">
+<div class="label">Awaiting packing</div>
+<div class="value warning">31</div>
+</div>
+
+<div class="card">
+<div class="label">Open issues</div>
+<div class="value danger">7</div>
+</div>
+
+</div>
+
+
 <div class="grid2">
-<div class="panel"><h2>Fulfillment progress</h2>
-<p class="small">Orders processed</p><div class="progressbar"><div style="width:82%"></div></div><p class="small">202 / 247 completed through processing</p>
-<p class="small">Picked</p><div class="progressbar"><div style="width:68%"></div></div><p class="small">168 / 247 picked</p>
-<p class="small">Packed</p><div class="progressbar"><div style="width:57%"></div></div><p class="small">141 / 247 packed</p>
+
+<!-- PROGRESS -->
+
+<div class="panel">
+
+<h2>Fulfillment progress</h2>
+
+<p class="small">Orders processed</p>
+
+<div class="progressbar">
+<div style="width:82%"></div>
 </div>
-<div class="panel"><h2>Attention needed</h2>
-<div class="alert">18 priority orders need same-day handling.</div>
-<div class="alert">5 orders are blocked because stock cannot be found.</div>
-<div class="alert">2 packed boxes are waiting for courier pickup.</div>
-</div></div>
-<div class="panel"><h2>Priority queue</h2><table><thead><tr><th>Order</th><th>Item</th><th>Status</th><th>Deadline</th><th>Action</th></tr></thead><tbody id="priorityRows"></tbody></table></div>
+
+<p class="small">
+202 / 247 completed through processing
+</p>
+
+
+<p class="small">Picked</p>
+
+<div class="progressbar">
+<div style="width:68%"></div>
+</div>
+
+<p class="small">
+168 / 247 picked
+</p>
+
+
+<p class="small">Packed</p>
+
+<div class="progressbar">
+<div style="width:57%"></div>
+</div>
+
+<p class="small">
+141 / 247 packed
+</p>
+
+</div>
+
+
+<!-- ATTENTION -->
+
+<div class="panel">
+
+<h2>Attention needed</h2>
+
+<div class="alert">
+18 priority orders need same-day handling.
+</div>
+
+<div class="alert">
+5 orders are blocked because stock cannot be found.
+</div>
+
+<div class="alert">
+2 packed boxes are waiting for courier pickup.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRIORITY QUEUE -->
+
+<div class="panel">
+
+<h2>Priority queue</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Order</th>
+<th>Item</th>
+<th>Status</th>
+<th>Deadline</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="priorityRows"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
 </section>
 
-<section id="orders" class="page"><h1>Orders</h1><div class="subtitle">Track every order from received to courier handover.</div>
-<div class="panel"><div class="toolbar"><input id="orderSearch" placeholder="Search order or product"><select id="statusFilter"><option value="">All statuses</option><option>Received</option><option>Picking</option><option>Packing</option><option>Staged</option><option>Blocked</option></select><select id="priorityFilter"><option value="">All priority</option><option>High</option><option>Medium</option><option>Normal</option></select></div>
-<table><thead><tr><th>Order</th><th>Product</th><th>Qty</th><th>Priority</th><th>Status</th><th>Warehouse</th><th>Action</th></tr></thead><tbody id="orderRows"></tbody></table></div></section>
 
-<section id="inventory" class="page"><h1>Inventory</h1><div class="subtitle">Reduce missing-stock and wrong-variant errors before picking.</div>
-<div class="panel"><div class="toolbar"><input id="invSearch" placeholder="Search SKU or product"></div>
-<table><thead><tr><th>SKU</th><th>Product / Variant</th><th>Main WH</th><th>Backup WH</th><th>Total</th><th>Stock status</th><th>Action</th></tr></thead><tbody id="invRows"></tbody></table></div></section>
 
-<section id="shipping" class="page"><h1>Shipping & Staging</h1><div class="subtitle">Know which boxes are ready and whether courier pickup is complete.</div>
-<div class="panel"><table><thead><tr><th>Order</th><th>Courier</th><th>Pickup window</th><th>Box location</th><th>Status</th><th>Action</th></tr></thead><tbody id="shipRows"></tbody></table></div></section>
+<!-- ================= ORDERS ================= -->
 
-<section id="issues" class="page"><h1>Issues</h1><div class="subtitle">Capture problems so they are visible and not forgotten.</div>
-<div class="panel"><div id="issueList"></div></div></section>
-</main></div>
+<section id="orders" class="page">
+
+<h1>Orders</h1>
+
+<div class="subtitle">
+Track every order from received to courier handover.
+</div>
+
+
+<div class="panel">
+
+<div class="toolbar">
+
+<input
+id="orderSearch"
+placeholder="Search order or product"
+>
+
+<select id="statusFilter">
+
+<option value="">
+All statuses
+</option>
+
+<option>
+Received
+</option>
+
+<option>
+Picking
+</option>
+
+<option>
+Packing
+</option>
+
+<option>
+Staged
+</option>
+
+<option>
+Blocked
+</option>
+
+</select>
+
+
+<select id="priorityFilter">
+
+<option value="">
+All priority
+</option>
+
+<option>
+High
+</option>
+
+<option>
+Medium
+</option>
+
+<option>
+Normal
+</option>
+
+</select>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Order</th>
+<th>Product</th>
+<th>Qty</th>
+<th>Priority</th>
+<th>Status</th>
+<th>Warehouse</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="orderRows"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= INVENTORY ================= -->
+
+<section id="inventory" class="page">
+
+<h1>Inventory</h1>
+
+<div class="subtitle">
+Reduce missing-stock and wrong-variant errors before picking.
+</div>
+
+
+<div class="panel">
+
+<div class="toolbar">
+
+<input
+id="invSearch"
+placeholder="Search SKU or product"
+>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>SKU</th>
+<th>Product / Variant</th>
+<th>Main WH</th>
+<th>Backup WH</th>
+<th>Total</th>
+<th>Stock status</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="invRows"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= SHIPPING ================= -->
+
+<section id="shipping" class="page">
+
+<h1>Shipping & Staging</h1>
+
+<div class="subtitle">
+Know which boxes are ready and whether courier pickup is complete.
+</div>
+
+
+<div class="panel">
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Order</th>
+<th>Courier</th>
+<th>Pickup window</th>
+<th>Box location</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="shipRows"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= ISSUES ================= -->
+
+<section id="issues" class="page">
+
+<h1>Issues</h1>
+
+<div class="subtitle">
+Capture problems so they are visible and not forgotten.
+</div>
+
+
+<div class="panel">
+
+<div id="issueList"></div>
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+
 <script>
-const orders=[
-{id:"XYZ-1001",product:"Cotton Kurti - Blue M",qty:1,priority:"High",status:"Picking",wh:"Main",deadline:"Today 3:00 PM"},
-{id:"XYZ-1002",product:"Hijab - Black",qty:2,priority:"High",status:"Blocked",wh:"Backup",deadline:"Today 3:30 PM"},
-{id:"XYZ-1003",product:"Bedsheet - King",qty:1,priority:"Medium",status:"Packing",wh:"Main",deadline:"Today 5:00 PM"},
-{id:"XYZ-1004",product:"Abaya - Brown L",qty:1,priority:"Normal",status:"Received",wh:"Main",deadline:"Tomorrow"},
-{id:"XYZ-1005",product:"Dress Material - Green",qty:2,priority:"Normal",status:"Staged",wh:"Main",deadline:"Today 6:00 PM"},
-{id:"XYZ-1006",product:"Hijab - Pink",qty:1,priority:"Medium",status:"Picking",wh:"Main",deadline:"Today 5:30 PM"}
+
+/* ================= DATA ================= */
+
+const orders = [
+
+{
+id:"XYZ-1001",
+product:"Cotton Kurti - Blue M",
+qty:1,
+priority:"High",
+status:"Picking",
+wh:"Main",
+deadline:"Today 3:00 PM"
+},
+
+{
+id:"XYZ-1002",
+product:"Hijab - Black",
+qty:2,
+priority:"High",
+status:"Blocked",
+wh:"Backup",
+deadline:"Today 3:30 PM"
+},
+
+{
+id:"XYZ-1003",
+product:"Bedsheet - King",
+qty:1,
+priority:"Medium",
+status:"Packing",
+wh:"Main",
+deadline:"Today 5:00 PM"
+},
+
+{
+id:"XYZ-1004",
+product:"Abaya - Brown L",
+qty:1,
+priority:"Normal",
+status:"Received",
+wh:"Main",
+deadline:"Tomorrow"
+},
+
+{
+id:"XYZ-1005",
+product:"Dress Material - Green",
+qty:2,
+priority:"Normal",
+status:"Staged",
+wh:"Main",
+deadline:"Today 6:00 PM"
+},
+
+{
+id:"XYZ-1006",
+product:"Hijab - Pink",
+qty:1,
+priority:"Medium",
+status:"Picking",
+wh:"Main",
+deadline:"Today 5:30 PM"
+}
+
 ];
-const inventory=[
-{sku:"SKU-101",product:"Cotton Kurti - Blue M",main:12,backup:5},
-{sku:"SKU-102",product:"Hijab - Black",main:0,backup:14},
-{sku:"SKU-103",product:"Bedsheet - King",main:8,backup:2},
-{sku:"SKU-104",product:"Abaya - Brown L",main:4,backup:0},
-{sku:"SKU-105",product:"Dress Material - Green",main:6,backup:0},
-{sku:"SKU-106",product:"Hijab - Pink",main:2,backup:7}
+
+
+const inventory = [
+
+{
+sku:"SKU-101",
+product:"Cotton Kurti - Blue M",
+main:12,
+backup:5
+},
+
+{
+sku:"SKU-102",
+product:"Hijab - Black",
+main:0,
+backup:14
+},
+
+{
+sku:"SKU-103",
+product:"Bedsheet - King",
+main:8,
+backup:2
+},
+
+{
+sku:"SKU-104",
+product:"Abaya - Brown L",
+main:4,
+backup:0
+},
+
+{
+sku:"SKU-105",
+product:"Dress Material - Green",
+main:6,
+backup:0
+},
+
+{
+sku:"SKU-106",
+product:"Hijab - Pink",
+main:2,
+backup:7
+}
+
 ];
-const shipments=[
-{id:"XYZ-1005",courier:"BlueDart",window:"4:00–5:00 PM",loc:"Staging A-03",status:"Ready"},
-{id:"XYZ-1003",courier:"Delhivery",window:"4:30–5:30 PM",loc:"Staging A-05",status:"Ready"},
-{id:"XYZ-0998",courier:"DTDC",window:"2:00–3:00 PM",loc:"Staging B-02",status:"Pickup missed"}
+
+
+const shipments = [
+
+{
+id:"XYZ-1005",
+courier:"BlueDart",
+window:"4:00–5:00 PM",
+loc:"Staging A-03",
+status:"Ready"
+},
+
+{
+id:"XYZ-1003",
+courier:"Delhivery",
+window:"4:30–5:30 PM",
+loc:"Staging A-05",
+status:"Ready"
+},
+
+{
+id:"XYZ-0998",
+courier:"DTDC",
+window:"2:00–3:00 PM",
+loc:"Staging B-02",
+status:"Pickup missed"
+}
+
 ];
-const issues=[
-{order:"XYZ-1002",type:"Stock unavailable",detail:"Main warehouse shows 0 units; 14 units available in backup warehouse.",owner:"Warehouse",status:"Open"},
-{order:"XYZ-0998",type:"Courier pickup missed",detail:"Box remains in staging after scheduled pickup window.",owner:"Office",status:"Open"},
-{order:"XYZ-0975",type:"Wrong variant check",detail:"Picker reported mismatch between shelf label and order variant.",owner:"Warehouse",status:"Investigating"},
-{order:"XYZ-0961",type:"Packed box misplaced",detail:"Staging location not updated after packing.",owner:"Warehouse",status:"Open"}
+
+
+const issues = [
+
+{
+order:"XYZ-1002",
+type:"Stock unavailable",
+detail:"Main warehouse shows 0 units; 14 units available in backup warehouse.",
+owner:"Warehouse",
+status:"Open"
+},
+
+{
+order:"XYZ-0998",
+type:"Courier pickup missed",
+detail:"Box remains in staging after scheduled pickup window.",
+owner:"Office",
+status:"Open"
+},
+
+{
+order:"XYZ-0975",
+type:"Wrong variant check",
+detail:"Picker reported mismatch between shelf label and order variant.",
+owner:"Warehouse",
+status:"Investigating"
+},
+
+{
+order:"XYZ-0961",
+type:"Packed box misplaced",
+detail:"Staging location not updated after packing.",
+owner:"Warehouse",
+status:"Open"
+}
+
 ];
-function badge(v){let c=v==="High"?"high":v==="Medium"?"medium":v==="Normal"?"normal":v==="Blocked"||v==="Pickup missed"?"issue":v==="Ready"?"ready":"progress";return `<span class="badge ${c}">${v}</span>`}
+
+
+
+/* ================= BADGES ================= */
+
+function badge(value){
+
+let className = "progress";
+
+if(value === "High"){
+className = "high";
+}
+
+else if(value === "Medium"){
+className = "medium";
+}
+
+else if(value === "Normal"){
+className = "normal";
+}
+
+else if(
+value === "Blocked" ||
+value === "Pickup missed"
+){
+className = "issue";
+}
+
+else if(value === "Ready"){
+className = "ready";
+}
+
+return `<span class="badge ${className}">
+${value}
+</span>`;
+
+}
+
+
+
+/* ================= ORDERS ================= */
+
 function renderOrders(){
- const q=(document.getElementById("orderSearch")?.value||"").toLowerCase(), s=document.getElementById("statusFilter")?.value||"", p=document.getElementById("priorityFilter")?.value||"";
- const list=orders.filter(o=>(!q||o.id.toLowerCase().includes(q)||o.product.toLowerCase().includes(q))&&(!s||o.status===s)&&(!p||o.priority===p));
- document.getElementById("orderRows").innerHTML=list.map(o=>`<tr><td><b>${o.id}</b></td><td>${o.product}</td><td>${o.qty}</td><td>${badge(o.priority)}</td><td>${badge(o.status)}</td><td>${o.wh}</td><td><button class="btn secondary" onclick="advance('${o.id}')">Update</button></td></tr>`).join("")||`<tr><td colspan="7" class="empty">No matching orders</td></tr>`;
- document.getElementById("priorityRows").innerHTML=orders.filter(o=>o.priority==="High").slice(0,5).map(o=>`<tr><td>${o.id}</td><td>${o.product}</td><td>${badge(o.status)}</td><td>${o.deadline}</td><td><button class="btn" onclick="advance('${o.id}')">Process</button></td></tr>`).join("");
+
+const searchInput =
+document.getElementById("orderSearch");
+
+const statusInput =
+document.getElementById("statusFilter");
+
+const priorityInput =
+document.getElementById("priorityFilter");
+
+
+const search =
+searchInput ? searchInput.value.toLowerCase() : "";
+
+const status =
+statusInput ? statusInput.value : "";
+
+const priority =
+priorityInput ? priorityInput.value : "";
+
+
+const filteredOrders = orders.filter(order => {
+
+const matchesSearch =
+!search ||
+order.id.toLowerCase().includes(search) ||
+order.product.toLowerCase().includes(search);
+
+const matchesStatus =
+!status ||
+order.status === status;
+
+const matchesPriority =
+!priority ||
+order.priority === priority;
+
+return (
+matchesSearch &&
+matchesStatus &&
+matchesPriority
+);
+
+});
+
+
+const orderRows =
+document.getElementById("orderRows");
+
+
+orderRows.innerHTML =
+filteredOrders.map(order => `
+
+<tr>
+
+<td>
+<b>${order.id}</b>
+</td>
+
+<td>
+${order.product}
+</td>
+
+<td>
+${order.qty}
+</td>
+
+<td>
+${badge(order.priority)}
+</td>
+
+<td>
+${badge(order.status)}
+</td>
+
+<td>
+${order.wh}
+</td>
+
+<td>
+
+<button
+class="btn secondary"
+onclick="advanceOrder('${order.id}')"
+>
+Update
+</button>
+
+</td>
+
+</tr>
+
+`).join("");
+
+
+if(filteredOrders.length === 0){
+
+orderRows.innerHTML = `
+
+<tr>
+
+<td
+colspan="7"
+class="empty"
+>
+No matching orders
+</td>
+
+</tr>
+
+`;
+
 }
+
+
+/* PRIORITY QUEUE */
+
+const priorityRows =
+document.getElementById("priorityRows");
+
+
+const priorityOrders =
+orders.filter(order =>
+order.priority === "High"
+);
+
+
+priorityRows.innerHTML =
+priorityOrders.map(order => `
+
+<tr>
+
+<td>
+${order.id}
+</td>
+
+<td>
+${order.product}
+</td>
+
+<td>
+${badge(order.status)}
+</td>
+
+<td>
+${order.deadline}
+</td>
+
+<td>
+
+<button
+class="btn"
+onclick="advanceOrder('${order.id}')"
+>
+Process
+</button>
+
+</td>
+
+</tr>
+
+`).join("");
+
+}
+
+
+
+/* ================= INVENTORY ================= */
+
 function renderInventory(){
- const q=(document.getElementById("invSearch")?.value||"").toLowerCase();
- document.getElementById("invRows").innerHTML=inventory.filter(i=>!q||i.sku.toLowerCase().includes(q)||i.product.toLowerCase().includes(q)).map(i=>{
- let total=i.main+i.backup, status=i.main>0?"Available":"Move stock";
- return `<tr><td>${i.sku}</td><td>${i.product}</td><td>${i.main}</td><td>${i.backup}</td><td>${total}</td><td>${badge(status==="Available"?"Ready":"Blocked")}</td><td>${status==="Move stock"?'<button class="btn" onclick="alert(\\'Transfer task created for '+i.sku+'\\')">Create transfer</button>':'—'}</td></tr>`}).join("");
+
+const searchBox =
+document.getElementById("invSearch");
+
+const search =
+searchBox ? searchBox.value.toLowerCase() : "";
+
+
+const rows =
+inventory.filter(item => {
+
+return (
+!search ||
+item.sku.toLowerCase().includes(search) ||
+item.product.toLowerCase().includes(search)
+);
+
+});
+
+
+const table =
+document.getElementById("invRows");
+
+
+table.innerHTML =
+rows.map(item => {
+
+const total =
+item.main + item.backup;
+
+const needsTransfer =
+item.main === 0;
+
+
+return `
+
+<tr>
+
+<td>
+${item.sku}
+</td>
+
+<td>
+${item.product}
+</td>
+
+<td>
+${item.main}
+</td>
+
+<td>
+${item.backup}
+</td>
+
+<td>
+${total}
+</td>
+
+<td>
+
+${badge(
+needsTransfer
+? "Blocked"
+: "Ready"
+)}
+
+</td>
+
+<td>
+
+${
+needsTransfer
+
+?
+
+`<button
+class="btn"
+onclick="createTransfer('${item.sku}')"
+>
+Create transfer
+</button>`
+
+:
+
+"—"
+
 }
-function renderShipping(){document.getElementById("shipRows").innerHTML=shipments.map(s=>`<tr><td>${s.id}</td><td>${s.courier}</td><td>${s.window}</td><td>${s.loc}</td><td>${badge(s.status)}</td><td><button class="btn secondary" onclick="alert('Shipment '+s.id+' marked for review')">Review</button></td></tr>`).join("")}
-function renderIssues(){document.getElementById("issueList").innerHTML=issues.map(i=>`<div class="issue-row"><div><b>${i.type}</b><div class="small">${i.order} • ${i.detail}</div><div class="small">Owner: ${i.owner}</div></div><div>${badge(i.status)} <button class="btn secondary" onclick="alert('Issue ${i.order} opened')">Open</button></div></div>`).join("")}
-function advance(id){let o=orders.find(x=>x.id===id);if(!o)return;const flow=["Received","Picking","Packing","Staged"];let n=flow.indexOf(o.status);if(o.status==="Blocked"){alert("This order is blocked. Resolve the stock issue first.");return}o.status=flow[Math.min(n+1,3)];renderOrders();}
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(b.dataset.page).classList.add("active")});
-["orderSearch","statusFilter","priorityFilter"].forEach(id=>document.getElementById(id).addEventListener("input",renderOrders));
-document.getElementById("invSearch").addEventListener("input",renderInventory);
-renderOrders();renderInventory();renderShipping();renderIssues();
+
+</td>
+
+</tr>
+
+`;
+
+}).join("");
+
+
+if(rows.length === 0){
+
+table.innerHTML = `
+
+<tr>
+
+<td
+colspan="7"
+class="empty"
+>
+No inventory found
+</td>
+
+</tr>
+
+`;
+
+}
+
+}
+
+
+
+/* ================= TRANSFER ================= */
+
+function createTransfer(sku){
+
+alert(
+"Transfer task created for " +
+sku
+);
+
+}
+
+
+
+/* ================= SHIPPING ================= */
+
+function renderShipping(){
+
+const table =
+document.getElementById("shipRows");
+
+
+table.innerHTML =
+shipments.map(shipment => `
+
+<tr>
+
+<td>
+${shipment.id}
+</td>
+
+<td>
+${shipment.courier}
+</td>
+
+<td>
+${shipment.window}
+</td>
+
+<td>
+${shipment.loc}
+</td>
+
+<td>
+${badge(shipment.status)}
+</td>
+
+<td>
+
+<button
+class="btn secondary"
+onclick="reviewShipment('${shipment.id}')"
+>
+Review
+</button>
+
+</td>
+
+</tr>
+
+`).join("");
+
+}
+
+
+
+function reviewShipment(id){
+
+alert(
+"Shipment " +
+id +
+" marked for review."
+);
+
+}
+
+
+
+/* ================= ISSUES ================= */
+
+function renderIssues(){
+
+const list =
+document.getElementById("issueList");
+
+
+list.innerHTML =
+issues.map(issue => `
+
+<div class="issue-row">
+
+<div>
+
+<b>
+${issue.type}
+</b>
+
+<div class="small">
+
+${issue.order}
+•
+${issue.detail}
+
+</div>
+
+<div class="small">
+
+Owner:
+${issue.owner}
+
+</div>
+
+</div>
+
+
+<div>
+
+${badge(issue.status)}
+
+<button
+class="btn secondary"
+onclick="openIssue('${issue.order}')"
+>
+Open
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+
+function openIssue(order){
+
+alert(
+"Issue " +
+order +
+" opened."
+);
+
+}
+
+
+
+/* ================= UPDATE ORDER ================= */
+
+function advanceOrder(id){
+
+const order =
+orders.find(item =>
+item.id === id
+);
+
+
+if(!order){
+return;
+}
+
+
+if(order.status === "Blocked"){
+
+alert(
+"This order is blocked. Resolve the stock issue first."
+);
+
+return;
+
+}
+
+
+const flow = [
+
+"Received",
+"Picking",
+"Packing",
+"Staged"
+
+];
+
+
+let currentIndex =
+flow.indexOf(order.status);
+
+
+if(currentIndex === -1){
+
+currentIndex = 0;
+
+}
+
+
+if(currentIndex <
+flow.length - 1){
+
+order.status =
+flow[currentIndex + 1];
+
+alert(
+order.id +
+" moved to " +
+order.status
+);
+
+}
+
+else{
+
+alert(
+order.id +
+" is already staged."
+);
+
+}
+
+
+renderOrders();
+
+}
+
+
+
+/* ================= NAVIGATION ================= */
+
+function showPage(pageId){
+
+/* Remove active from all buttons */
+
+document
+.querySelectorAll("nav button")
+.forEach(button => {
+
+button.classList.remove("active");
+
+});
+
+
+/* Add active to clicked button */
+
+const activeButton =
+document.querySelector(
+`nav button[data-page="${pageId}"]`
+);
+
+
+if(activeButton){
+
+activeButton.classList.add("active");
+
+}
+
+
+/* Hide all pages */
+
+document
+.querySelectorAll(".page")
+.forEach(page => {
+
+page.classList.remove("active");
+
+});
+
+
+/* Show selected page */
+
+const selectedPage =
+document.getElementById(pageId);
+
+
+if(selectedPage){
+
+selectedPage.classList.add("active");
+
+}
+
+
+/* Scroll to top */
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+
+/* ================= NAV BUTTON EVENTS ================= */
+
+document
+.querySelectorAll("nav button")
+.forEach(button => {
+
+button.addEventListener(
+"click",
+function(){
+
+const page =
+this.getAttribute("data-page");
+
+showPage(page);
+
+}
+);
+
+});
+
+
+
+/* ================= SEARCH EVENTS ================= */
+
+const orderSearch =
+document.getElementById("orderSearch");
+
+if(orderSearch){
+
+orderSearch.addEventListener(
+"input",
+renderOrders
+);
+
+}
+
+
+const statusFilter =
+document.getElementById("statusFilter");
+
+if(statusFilter){
+
+statusFilter.addEventListener(
+"change",
+renderOrders
+);
+
+}
+
+
+const priorityFilter =
+document.getElementById("priorityFilter");
+
+if(priorityFilter){
+
+priorityFilter.addEventListener(
+"change",
+renderOrders
+);
+
+}
+
+
+const inventorySearch =
+document.getElementById("invSearch");
+
+if(inventorySearch){
+
+inventorySearch.addEventListener(
+"input",
+renderInventory
+);
+
+}
+
+
+
+/* ================= INITIAL LOAD ================= */
+
+renderOrders();
+
+renderInventory();
+
+renderShipping();
+
+renderIssues();
+
 </script>
-</body></html>
+
+</body>
+</html>
